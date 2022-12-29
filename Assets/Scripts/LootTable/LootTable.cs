@@ -8,33 +8,23 @@ namespace TV.LootTable
 {
     public class LootTable : MonoBehaviour
     {
-        public enum Rarity
-        {
-            Common, Uncommon, Rare, Epic, Legendary, Mythic
-        }
-        [System.Serializable]
-        public class Item
-        {
-            public GameObject prefab;
-            public int probability;
-            public Rarity rarity;
-        }
         public List<Item> itemList = new List<Item>();
         [Button]
-        public Item DropItem()
+        public void DropItem()
         {
             int roll = Random.Range(0, 100);
-            Debug.Log(roll);
             foreach (var item in itemList)
             {
                 if (roll <= item.probability)
                 {
-                    Debug.Log($"Instantiate Item {item.probability}");
-                    return item;
+                    var quantity = Random.Range(item.min, item.max);
+                    for (int i = 0; i < quantity; i++)
+                    {
+                        Instantiate(item.prefab);
+                    }
+                    return;
                 }
             }
-
-            return null;
         }
     }
 }
