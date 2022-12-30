@@ -1,30 +1,25 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Random = UnityEngine.Random;
 
 namespace TV.LootTable
 {
-    public class LootTable : MonoBehaviour
+    [CreateAssetMenu(fileName = "New Loot Table", menuName = "Loot Table", order = 0)]
+    public class LootTable : ScriptableObject
     {
-        public List<Item> itemList = new List<Item>();
-        [Button]
-        public void DropItem()
-        {
-            int roll = Random.Range(0, 100);
-            foreach (var item in itemList)
-            {
-                if (roll <= item.probability)
-                {
-                    var quantity = Random.Range(item.min, item.max);
-                    for (int i = 0; i < quantity; i++)
-                    {
-                        Instantiate(item.prefab);
-                    }
-                    return;
-                }
-            }
-        }
+        public List<DroppableItem> dropList;
+
+    }
+    
+    [System.Serializable]
+    public class DroppableItem
+    {
+        public ItemSO item;
+        [MinValue(0)]
+        public int probability;
+        [MinValue(0)]
+        public int min;
+        [MinValue(0)]
+        public int max;
     }
 }
