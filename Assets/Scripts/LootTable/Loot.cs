@@ -4,12 +4,11 @@ using Random = UnityEngine.Random;
 
 namespace TV.LootTable
 {
-    public class Lootable: MonoBehaviour
+    public class Loot: MonoBehaviour
     {
         [Required]
-        public LootTable lootTable;
+        public LootTableSO lootTable;
         
-        [Button]
         public Item GetDrop()
         {
             int roll = Random.Range(0, 100);

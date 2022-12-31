@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 namespace TV.LootTable
 {
     [CreateAssetMenu(fileName = "New Loot Table", menuName = "Loot Table", order = 0)]
-    public class LootTable : ScriptableObject
+    public class LootTableSO : ScriptableObject
     {
         public List<DroppableItem> dropList;
 

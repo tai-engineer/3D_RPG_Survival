@@ -1,5 +1,6 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
+
 namespace TV.LootTable
 {
     [CreateAssetMenu(fileName = "New Item", menuName = "Items/Item")]
@@ -9,8 +10,9 @@ namespace TV.LootTable
         public  GameObject prefab { get; private set; }
         [ShowInInspector]
         public Rarity rarity  { get; private set; }
-        [ShowInInspector]
-        public string description  { get; private set; }
+
+        [SerializeField,TextArea(10, 10)]
+        private string description;
         [ShowInInspector]
         public int damage  { get; private set; }
         [ShowInInspector]
@@ -27,6 +29,7 @@ namespace TV.LootTable
     public class Item
     {
         private readonly ItemSO itemData;
+        /*TODO: this data should be managed by other class*/
         public int amount { get; }
         public int damage => itemData.damage;
         public int defense => itemData.defense;
