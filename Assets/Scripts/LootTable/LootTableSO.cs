@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 
-namespace TV.LootTable
+namespace TV
 {
     [CreateAssetMenu(fileName = "New Loot Table", menuName = "Loot Table", order = 0)]
     public class LootTableSO : ScriptableObject

@@ -1,10 +1,9 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Random = UnityEngine.Random;
-
-namespace TV.LootTable
+namespace TV
 {
-    public class Loot: MonoBehaviour
+    public class LootBox: MonoBehaviour
     {
         [Required]
         public LootTableSO lootTable;
@@ -24,7 +23,19 @@ namespace TV.LootTable
 
             return null;
         }
+
+        void FixedUpdate()
+        {
+            var colliders = Physics.OverlapSphere(transform.position, 1);
+            foreach (var collider in colliders)
+            {
+                if (collider.TryGetComponent<Collectible>(out Collectible
+                        collectible))
+                {
+                    var item = collectible.Pickup();
+                    Debug.Log("Picking item: " + item.name);
+                }
+            }
+        }
     }
-    
-    
 }
