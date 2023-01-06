@@ -23,19 +23,5 @@ namespace TV
 
             return null;
         }
-
-        void FixedUpdate()
-        {
-            var colliders = Physics.OverlapSphere(transform.position, 1);
-            foreach (var collider in colliders)
-            {
-                if (collider.TryGetComponent<Collectible>(out Collectible
-                        collectible))
-                {
-                    var item = collectible.Pickup();
-                    Debug.Log("Picking item: " + item.name);
-                }
-            }
-        }
     }
 }
